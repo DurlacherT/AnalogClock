@@ -9,6 +9,7 @@ import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
 public class AnalogClock extends JPanel implements Runnable
 {
     int xposition = 175;
