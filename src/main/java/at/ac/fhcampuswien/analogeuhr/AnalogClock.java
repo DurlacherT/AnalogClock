@@ -1,19 +1,23 @@
 package at.ac.fhcampuswien.analogeuhr;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.Scanner;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
 public class AnalogClock extends JPanel implements Runnable
 {
-    int xposition = 175;
-    int yposition = 175;
+    static int setbackground;
+    int xposition = 300;
+    int yposition = 300;
     int lastxs = 0;
     int lastys = 0;
     int lastxm = 0;
@@ -25,10 +29,17 @@ public class AnalogClock extends JPanel implements Runnable
     Date date;
 
     /*
-     * Die drawBackground Methode fügt einem Graphics objekt Attribute hinzu.
+     * Die drawBackground Methode fügt einem Graphics Objekt Attribute hinzu.
      */
     private void drawBackground(Graphics g)
     {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("test.jpg"));
+        } catch (
+                IOException e) {
+        }
+
         //innere Farbe (Uhr)
         g.setColor(Color.orange);
         g.fillOval(xposition - 150, yposition - 150, 300, 300);
@@ -38,12 +49,6 @@ public class AnalogClock extends JPanel implements Runnable
         g.setFont(new Font("Serif", Font.BOLD, 30));
         g.drawString("Dragon Ball", 95, 110);
 
-        //Farbe Uhrzeit (12, 3, 6, 9)
-        g.setColor(Color.black);
-        g.drawString("XII", xposition - 20, yposition - 120);
-        g.drawString("III", xposition + 115, yposition + 0);
-        g.drawString("VI", xposition - 10, yposition + 145);
-        g.drawString("IX", xposition - 145, yposition + 0);
 
         //Sternchen im Kreis
         g.drawString("*", xposition -50, yposition +40);
@@ -51,11 +56,23 @@ public class AnalogClock extends JPanel implements Runnable
         g.drawString("*", xposition +50, yposition -40);
         g.drawString("*", xposition +110, yposition -20);
 
+        if ( setbackground == 1) {
+            g.drawImage(img, 0, 0, null);} //Eingabe die Hintergrund auswählt
+
+        //Farbe Uhrzeit (12, 3, 6, 9)
+        g.setColor(Color.black);
+        g.drawString("XII", xposition - 20, yposition - 220);
+        g.drawString("III", xposition + 215, yposition + 0);
+        g.drawString("VI", xposition - 10, yposition + 245);
+        g.drawString("IX", xposition - 245, yposition + 0);
     }
+
+
+
     /*
      * Die paint Methode ist für die Darstellung der Zeiger verantwortlich.
      */
-    public void paint(Graphics g)
+    public void paint(Graphics g1)
     {
         int xhour;
         int yhour;
@@ -66,6 +83,8 @@ public class AnalogClock extends JPanel implements Runnable
         int second;
         int minute;
         int hour;
+        Graphics2D g = (Graphics2D) g1; // 2D wird für 2D Zeiger gebraucht
+
 
         //Kreis (Uhr)
         drawBackground(g);
@@ -82,18 +101,18 @@ public class AnalogClock extends JPanel implements Runnable
 
         //x+y center = Beginn des Zeigers
         //120 = ZeigerLänge
-        xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 120 + xposition);
-        ysecond = (int)(Math.sin(second * Math.PI / 30 - Math.PI / 2) * 120 + yposition);
+        xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + xposition);
+        ysecond = (int)(Math.sin(second * Math.PI / 30 - Math.PI / 2) * 220 + yposition);
 
         //x+y center = Beginn des Zeigers
         //100 = ZeigerLänge
-        xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 100 + xposition);
-        yminute = (int)(Math.sin(minute * Math.PI / 30 - Math.PI / 2) * 100 + yposition);
+        xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 200 + xposition);
+        yminute = (int)(Math.sin(minute * Math.PI / 30 - Math.PI / 2) * 200 + yposition);
 
         //x+y center = Beginn des Zeigers
         //80 = ZeigerLänge
-        xhour = (int)(Math.cos((hour * 30 + minute / 2) * Math.PI / 180 - Math.PI / 2) * 80 + xposition);
-        yhour = (int)(Math.sin((hour * 30 + minute / 2) * Math.PI / 180 - Math.PI / 2) * 80 + yposition);
+        xhour = (int)(Math.cos((hour * 30 + minute / 2) * Math.PI / 180 - Math.PI / 2) * 180 + xposition);
+        yhour = (int)(Math.sin((hour * 30 + minute / 2) * Math.PI / 180 - Math.PI / 2) * 180 + yposition);
 
         //aktuelle Uhrzeit darstellen
         if (xsecond != lastxs || ysecond != lastys)
@@ -113,17 +132,20 @@ public class AnalogClock extends JPanel implements Runnable
             g.drawLine(xposition - 1, yposition, lastxh, lastyh);
         }
 
+        g.setStroke(new BasicStroke(6)); // Breite Zeiger
         //SekundenZeiger Farbe
         g.setColor(Color.black);
         g.drawLine(xposition, yposition, xsecond, ysecond);
 
         //MinutenZeiger Farbe
-        g.setColor(Color.red);
+        g.setStroke(new BasicStroke(8));
+        g.setColor(Color.black);
         g.drawLine(xposition, yposition - 1, xminute, yminute);
         g.drawLine(xposition - 1, yposition, xminute, yminute);
 
         //StundenZeiger Farbe
-        g.setColor(Color.blue);
+        g.setStroke(new BasicStroke(10));
+        g.setColor(Color.black);
         g.drawLine(xposition, yposition - 1, xhour, yhour);
         g.drawLine(xposition - 1, yposition, xhour, yhour);
         lastxs = xsecond;
@@ -134,6 +156,9 @@ public class AnalogClock extends JPanel implements Runnable
         lastyh = yhour;
     }
 
+    /*
+     * Thread geht in runnable Status, die start Methode ruft intern die run Methode auf.
+     */
     public void start()
     {
         if (thread == null)
@@ -143,27 +168,19 @@ public class AnalogClock extends JPanel implements Runnable
         }
     }
 
-    public void stop()
-    {
-        thread = null;
-    }
 
-
-    public void run()
+    public void run()  // thread startet
     {
-        while (thread != null)
-        {
-            try
-            {
-                Thread.sleep(100);
-            }
-            catch (InterruptedException e) {}
-            repaint();
+        while (true) {
+            try {
+                Thread.sleep(50); //Pausiert execution für 50 milliseconds
+            } catch (InterruptedException e) {
+            }  // try catch wirde benötigt weil anderen threads den thread unterbrechen können
+            repaint();      // paints und updates
         }
-        thread = null;
     }
 
-    public void update(Graphics g)
+    public void update(Graphics g) // wird intern von repaint() aufgerufen
     {
         paint(g);
     }
@@ -171,6 +188,10 @@ public class AnalogClock extends JPanel implements Runnable
 
     public static void main(String args[])
     {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Schreibe 1 für Hintergrund");
+        setbackground = scanner.nextInt();
+
         //Fenster Pop-Up
         JFrame window = new JFrame();
 
@@ -184,7 +205,7 @@ public class AnalogClock extends JPanel implements Runnable
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Länge+Breite vom Fenster
-        window.setBounds(0, 0, 400, 400);
+        window.setBounds(0, 0, 600, 600);
 
         //Objekt
         AnalogClock clock = new AnalogClock();
