@@ -34,11 +34,26 @@ public class AnalogClock extends JPanel implements Runnable
     private void drawBackground(Graphics g)
     {
         BufferedImage img = null;
-        try {
-            img = ImageIO.read(new File("test.jpg"));
-        } catch (
-                IOException e) {
+        if (setbackground==1) {
+            try {
+                img = ImageIO.read(new File("image0.jpg"));
+            } catch (
+                    IOException e) {
+            }
+        } else if (setbackground==2) {
+            try {
+                img = ImageIO.read(new File("image1.jpg"));
+            } catch (
+                    IOException e) {
+            }
+        } else if (setbackground==3) {
+            try {
+                img = ImageIO.read(new File("image2.jpg"));
+            } catch (
+                    IOException e) {
+            }
         }
+
 
         //innere Farbe (Uhr)
         g.setColor(Color.orange);
@@ -56,8 +71,7 @@ public class AnalogClock extends JPanel implements Runnable
         g.drawString("*", xposition +50, yposition -40);
         g.drawString("*", xposition +110, yposition -20);
 
-        if ( setbackground == 1) {
-            g.drawImage(img, 0, 0, null);} //Eingabe die Hintergrund auswählt
+            g.drawImage(img, 0, 0, null); //Eingabe die Hintergrund auswählt
 
         //Farbe Uhrzeit (12, 3, 6, 9)
         g.setColor(Color.black);
@@ -189,8 +203,27 @@ public class AnalogClock extends JPanel implements Runnable
     public static void main(String args[])
     {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Schreibe 1 für Hintergrund");
-        setbackground = scanner.nextInt();
+        Boolean error = true;
+
+        //Input
+        do {
+            try {
+                System.out.println("Choose design between 1 and 5: ");
+                setbackground = Integer.parseInt(scanner.next());
+                if ( setbackground <= 5 && setbackground >= 1)
+                {
+                    error = false;
+                } else {
+                    error = true;
+                    System.out.println("Error!");
+                    scanner.reset();
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Error!");
+                scanner.reset();
+            }
+        } while (error);
 
         //Fenster Pop-Up
         JFrame window = new JFrame();
