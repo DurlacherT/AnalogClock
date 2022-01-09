@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62a15f8e-2120-4915-b8bb-e91bc05e0554" name="Changes" comment="first push">
-      <change afterPath="$PROJECT_DIR$/image1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -16,7 +14,6 @@
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/ac/fhcampuswien/analogeuhr/AnalogClock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/ac/fhcampuswien/analogeuhr/AnalogClock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image0.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +27,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="23McXoGggcZCJzcnZyu2OxbEWCY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -81,7 +86,8 @@
       <workItem from="1641547444173" duration="1313000" />
       <workItem from="1641590449746" duration="833000" />
       <workItem from="1641672870125" duration="5515000" />
-      <workItem from="1641753091460" duration="1587000" />
+      <workItem from="1641753091460" duration="3318000" />
+      <workItem from="1641760221295" duration="4129000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1641590961808</created>
@@ -104,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641677944163</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="first push">
+      <created>1641754739728</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1641754739728</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

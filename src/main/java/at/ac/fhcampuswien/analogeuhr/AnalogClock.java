@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien.analogeuhr;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -9,13 +11,12 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 public class AnalogClock extends JPanel implements Runnable
 {
-    static int setbackground;
+    static private int design;
     int xposition = 300;
     int yposition = 300;
     int lastxs = 0;
@@ -28,27 +29,37 @@ public class AnalogClock extends JPanel implements Runnable
     SimpleDateFormat formattedDate = new SimpleDateFormat("s", Locale.getDefault());
     Date date;
 
+    public static void setSetbackground(int background) {
+        AnalogClock.design = background;
+    }
+
     /*
      * Die drawBackground Methode fügt einem Graphics Objekt Attribute hinzu.
      */
     private void drawBackground(Graphics g)
     {
         BufferedImage img = null;
-        if (setbackground==1) {
+        if (design==1) {
             try {
                 img = ImageIO.read(new File("image0.jpg"));
             } catch (
                     IOException e) {
             }
-        } else if (setbackground==2) {
+        } else if (design==2) {
             try {
                 img = ImageIO.read(new File("image1.jpg"));
             } catch (
                     IOException e) {
             }
-        } else if (setbackground==3) {
+        } else if (design==3) {
             try {
                 img = ImageIO.read(new File("image2.jpg"));
+            } catch (
+                    IOException e) {
+            }
+        } else {
+            try {
+                img = ImageIO.read(new File("image4.jpg"));
             } catch (
                     IOException e) {
             }
@@ -56,22 +67,10 @@ public class AnalogClock extends JPanel implements Runnable
 
 
         //innere Farbe (Uhr)
-        g.setColor(Color.orange);
-        g.fillOval(xposition - 150, yposition - 150, 300, 300);
-
-        //Dragon Ball Farbe
-        g.setColor(Color.red);
-        g.setFont(new Font("Serif", Font.BOLD, 30));
-        g.drawString("Dragon Ball", 95, 110);
-
-
-        //Sternchen im Kreis
-        g.drawString("*", xposition -50, yposition +40);
-        g.drawString("*", xposition -10, yposition +100);
-        g.drawString("*", xposition +50, yposition -40);
-        g.drawString("*", xposition +110, yposition -20);
+        g.setColor(Color.white);
 
             g.drawImage(img, 0, 0, null); //Eingabe die Hintergrund auswählt
+
 
         //Farbe Uhrzeit (12, 3, 6, 9)
         g.setColor(Color.black);
@@ -185,7 +184,7 @@ public class AnalogClock extends JPanel implements Runnable
 
     public void run()  // thread startet
     {
-        while (true) {
+        while (thread!=null) {
             try {
                 Thread.sleep(50); //Pausiert execution für 50 milliseconds
             } catch (InterruptedException e) {
@@ -200,36 +199,71 @@ public class AnalogClock extends JPanel implements Runnable
     }
 
 
+
     public static void main(String args[])
     {
         Scanner scanner = new Scanner(System.in);
         Boolean error = true;
 
-        //Input
-        do {
-            try {
-                System.out.println("Choose design between 1 and 5: ");
-                setbackground = Integer.parseInt(scanner.next());
-                if ( setbackground <= 5 && setbackground >= 1)
-                {
-                    error = false;
-                } else {
-                    error = true;
-                    System.out.println("Error!");
-                    scanner.reset();
-                }
+        //Objekt
+        AnalogClock clock = new AnalogClock();
+
+        JFrame f=new JFrame("Button window");
+        final JTextField newfe=new JTextField();
+        newfe.setBounds(50,25, 150,20);
+
+        JButton button3=new JButton("Click here for design 3");
+        JButton button2=new JButton("Click here for design 2");
+        JButton button1=new JButton("Click here for design 1");
+        JButton button4=new JButton("Stop");
+
+        button1.setBounds(50,50,200,30);
+        button2.setBounds(50,75,200,30);
+        button3.setBounds(50,100,200,30);
+        button4.setBounds(50,125,200,30);
+
+
+        button1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                newfe.setText("Design 1");
+                setSetbackground(1);
             }
-            catch (Exception e) {
-                System.out.println("Error!");
-                scanner.reset();
+        });
+        button2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                newfe.setText("Design 2");
+                setSetbackground(2);
             }
-        } while (error);
+        });
+        button3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                newfe.setText("Design 3");
+                setSetbackground(3);
+            }
+        });
+        button4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                newfe.setText("Exit");
+                System.exit(0);
+            }
+        });
+
+        f.add(button3);
+        f.add(button2);
+        f.add(button1);
+        f.add(button4);
+
+        f.add(newfe);
+        f.setBounds(600,100,300,300);
+        f.setLayout(null);
+        f.setVisible(true);
 
         //Fenster Pop-Up
         JFrame window = new JFrame();
 
         //Hintergrundfarbe
         Color c = new Color(255, 255, 255);
+
 
         //Hintergrundfarbe im Fenster implementieren
         window.setBackground(c);
@@ -240,8 +274,6 @@ public class AnalogClock extends JPanel implements Runnable
         //Länge+Breite vom Fenster
         window.setBounds(0, 0, 600, 600);
 
-        //Objekt
-        AnalogClock clock = new AnalogClock();
 
         //Objektimport im Fenster
         window.getContentPane().add(clock);
