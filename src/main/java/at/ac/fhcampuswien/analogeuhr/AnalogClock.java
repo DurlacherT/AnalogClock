@@ -13,7 +13,6 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-
 public class AnalogClock extends JPanel implements Runnable
 {
     static private int design;
@@ -29,7 +28,7 @@ public class AnalogClock extends JPanel implements Runnable
     SimpleDateFormat formattedDate = new SimpleDateFormat("s", Locale.getDefault());
     Date date;
 
-    public static void setSetbackground(int background) {
+    public static void setBackground(int background) {
         AnalogClock.design = background;
     }
 
@@ -43,44 +42,40 @@ public class AnalogClock extends JPanel implements Runnable
             try {
                 img = ImageIO.read(new File("image0.jpg"));
             } catch (
-                    IOException e) {
+                    IOException ignored) {
             }
         } else if (design==2) {
             try {
                 img = ImageIO.read(new File("image1.jpg"));
             } catch (
-                    IOException e) {
+                    IOException ignored) {
             }
         } else if (design==3) {
             try {
                 img = ImageIO.read(new File("image2.jpg"));
             } catch (
-                    IOException e) {
+                    IOException ignored) {
             }
         } else {
             try {
                 img = ImageIO.read(new File("image4.jpg"));
             } catch (
-                    IOException e) {
+                    IOException ignored) {
             }
         }
-
 
         //innere Farbe (Uhr)
         g.setColor(Color.white);
 
             g.drawImage(img, 0, 0, null); //Eingabe die Hintergrund auswählt
 
-
         //Farbe Uhrzeit (12, 3, 6, 9)
         g.setColor(Color.black);
         g.drawString("XII", xposition - 20, yposition - 220);
-        g.drawString("III", xposition + 215, yposition + 0);
+        g.drawString("III", xposition + 215, yposition);
         g.drawString("VI", xposition - 10, yposition + 245);
-        g.drawString("IX", xposition - 245, yposition + 0);
+        g.drawString("IX", xposition - 245, yposition);
     }
-
-
 
     /*
      * Die paint Methode ist für die Darstellung der Zeiger verantwortlich.
@@ -97,7 +92,6 @@ public class AnalogClock extends JPanel implements Runnable
         int minute;
         int hour;
         Graphics2D g = (Graphics2D) g1; // 2D wird für 2D Zeiger gebraucht
-
 
         //Kreis (Uhr)
         drawBackground(g);
@@ -124,8 +118,8 @@ public class AnalogClock extends JPanel implements Runnable
 
         //x+y center = Beginn des Zeigers
         //80 = ZeigerLänge
-        xhour = (int)(Math.cos((hour * 30 + minute / 2) * Math.PI / 180 - Math.PI / 2) * 180 + xposition);
-        yhour = (int)(Math.sin((hour * 30 + minute / 2) * Math.PI / 180 - Math.PI / 2) * 180 + yposition);
+        xhour = (int)(Math.cos((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + xposition);
+        yhour = (int)(Math.sin((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + yposition);
 
         //aktuelle Uhrzeit darstellen
         if (xsecond != lastxs || ysecond != lastys)
@@ -181,7 +175,6 @@ public class AnalogClock extends JPanel implements Runnable
         }
     }
 
-
     public void run()  // thread startet
     {
         while (thread!=null) {
@@ -199,8 +192,7 @@ public class AnalogClock extends JPanel implements Runnable
     }
 
 
-
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
         Boolean error = true;
@@ -222,23 +214,22 @@ public class AnalogClock extends JPanel implements Runnable
         button3.setBounds(50,100,200,30);
         button4.setBounds(50,125,200,30);
 
-
         button1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 newfe.setText("Design 1");
-                setSetbackground(1);
+                setBackground(1);
             }
         });
         button2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 newfe.setText("Design 2");
-                setSetbackground(2);
+                setBackground(2);
             }
         });
         button3.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 newfe.setText("Design 3");
-                setSetbackground(3);
+                setBackground(3);
             }
         });
         button4.addActionListener(new ActionListener(){
@@ -264,7 +255,6 @@ public class AnalogClock extends JPanel implements Runnable
         //Hintergrundfarbe
         Color c = new Color(255, 255, 255);
 
-
         //Hintergrundfarbe im Fenster implementieren
         window.setBackground(c);
 
@@ -273,7 +263,6 @@ public class AnalogClock extends JPanel implements Runnable
 
         //Länge+Breite vom Fenster
         window.setBounds(0, 0, 600, 600);
-
 
         //Objektimport im Fenster
         window.getContentPane().add(clock);
