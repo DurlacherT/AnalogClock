@@ -35,36 +35,36 @@ Different files are imported depending on the choice of the user:
 
 Uses image to draw background:
 ```java
-g.drawImage(img, 0, 0, null);
+    g.drawImage(img, 0, 0, null);
 ```
 Adds roman numerals to the background:
 ```java
-g.setColor(Color.black);
-g.drawString("XII", xposition - 20, yposition - 220);
+    g.setColor(Color.black);
+    g.drawString("XII", xposition - 20, yposition - 220);
 ```
 
 Type casting is used to cread a 2D graphics object because we want to display 2D clock hands:
 ```java
-Graphics2D g = (Graphics2D) g1;
+   Graphics2D g = (Graphics2D) g1;
 ```
 
 Formatted date function is used to acquire second, minutes, and hour values:
 ```java
-formattedDate.applyPattern("s");
-second = Integer.parseInt(formattedDate.format(date));
-```java
+    formattedDate.applyPattern("s");
+    second = Integer.parseInt(formattedDate.format(date));
+```
 Those values are used as input for a function that calculates coordinates:
 ```java
-xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + xposition);
+    xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + xposition);
 ```
-
+Additional attributes of the clock hands are set and the hands are drawn:
 ```java
-        g.setStroke(new BasicStroke(6)); // Breite Zeiger
-        //SekundenZeiger Farbe
+        g.setStroke(new BasicStroke(6)); 
         g.setColor(Color.black);
         g.drawLine(xposition, yposition, xsecond, ysecond);
 ```
 
+The thread methods are used to execute the code above within a thread. start() puts the thread in runnable state: 
 ```java
     public void start()
     {
@@ -74,32 +74,38 @@ xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + xposition)
             thread.start();
         }
     }
+```
+run() starts the thread
+```java
 
-    public void run()  // thread startet
+    public void run()  
     {
         while (thread!=null) {
             try {
-                Thread.sleep(50); //Pausiert execution für 50 milliseconds
+                Thread.sleep(50); //pauses execution for 50 milliseconds
             } catch (InterruptedException e) {
-            }  // try catch wirde benötigt weil anderen threads den thread unterbrechen können
+            }  // try catch //used because other threads can pause thread execution
             repaint();      // paints und updates
         }
     }
-
-    public void update(Graphics g) // wird intern von repaint() aufgerufen
+```    
+update() is called internally by repaint()
+```java
+    public void update(Graphics g) 
     {
         paint(g);
     }
 
 ```
 
+In the main method JFrame objects are used as containers. Those containers serve as the main windows.
+Buttons are created to determine user input:
 ```java
         JFrame buttonWindow = new JFrame("Button window");
         final JTextField textfield = new JTextField();
         textfield.setBounds(50,25, 150,20);
 
         JButton button3=new JButton("Click here for design 3");
-        
         
                 button1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -108,16 +114,19 @@ xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + xposition)
             }
         });
  ```   
-        
+A second JFrame object contains and displays the clock:
 ```java
-JFrame windowClock = new JFrame();
-Color c = new Color(255, 255, 255);
-windowClock.setBackground(c);
-windowClock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-windowClock.setBounds(0, 0, 600, 600);
-windowClock.getContentPane().add(clock);
-windowClock.setVisible(true);
-clock.start();
+    JFrame windowClock = new JFrame();
+    Color c = new Color(255, 255, 255);
+    windowClock.setBackground(c);
+    windowClock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    windowClock.setBounds(0, 0, 600, 600);
+    windowClock.getContentPane().add(clock);
+    windowClock.setVisible(true);
+```
+clock.start() starts the clock procedure:
+```java
+    clock.start();
 ```
 
 ## Authors
