@@ -18,6 +18,20 @@ The main method can be divided into two section:
 
 The main classes use in drawing the background and clock hands are the standard Java graphics, and graphics2D classes.
 
+At the start of the program we import the classes used in the application:
+```java
+import java.awt.*;                      //--> Graphics object
+import java.awt.event.ActionEvent;      //--> Action event for button
+import java.awt.event.ActionListener;   //--> Action listener for button
+import java.awt.image.BufferedImage;    //--> Save image
+import java.io.File;                    //--> Image import
+import java.io.IOException;             //--> Exception handling
+import java.util.Date;                  //--> Getting date and time
+import java.text.SimpleDateFormat;      //--> Formatting date and time
+import javax.imageio.ImageIO;           //--> Import images
+import javax.swing.*;                   //--> Create container and windows
+```
+
 The drawBackground method is used to draw the background of the Clock. 
 
 Different files are imported depending on the choice of the user:
@@ -130,4 +144,4 @@ clock.start() starts the clock procedure:
 ```
 
 ## Authors
-Thomas Durlacher, Yassin Elwan, Enes Berk, Lisa Ebenbauer, 
+Thomas Durlacher, Yassin Elwan, Enes Berk, Lisa Ebenbauer
