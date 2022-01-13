@@ -27,9 +27,11 @@ public class AnalogClock extends JPanel implements Runnable
     Date date;
 
     /*
-     * The drawBackground methods adds attributes to a Graphics g object.
+     * The drawBackground method adds attributes to a Graphics g object.
      */
     private void drawBackground(Graphics g) {
+
+        //Select input file for background.
         BufferedImage img = null;
         switch (design) {
             case 1:
@@ -67,7 +69,7 @@ public class AnalogClock extends JPanel implements Runnable
     }
 
     /*
-     * Die paint methods draws the hand of the analogue clock.
+     * The paint method draws the hand of the analogue clock.
      */
     public void paint(Graphics g1)
     {
