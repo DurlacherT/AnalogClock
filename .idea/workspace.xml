@@ -11,9 +11,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/ac/fhcampuswien/analogeuhr/AnalogClock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/ac/fhcampuswien/analogeuhr/AnalogClock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +100,13 @@
       <workItem from="1641804420597" duration="501000" />
       <workItem from="1641904419401" duration="5732000" />
       <workItem from="1641933939509" duration="175000" />
-      <workItem from="1641972106155" duration="6939000" />
+      <workItem from="1641972106155" duration="8283000" />
+      <workItem from="1641982314845" duration="975000" />
+      <workItem from="1641984553810" duration="296000" />
+      <workItem from="1642011822849" duration="1242000" />
+      <workItem from="1642013536816" duration="3621000" />
+      <workItem from="1642026700778" duration="996000" />
+      <workItem from="1642080007935" duration="4480000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1641590961808</created>
@@ -140,7 +150,21 @@
       <option name="project" value="LOCAL" />
       <updated>1641765062391</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="push">
+      <created>1641980116322</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1641980116322</updated>
+    </task>
+    <task id="LOCAL-00008" summary="push">
+      <created>1641980136242</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1641980136242</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

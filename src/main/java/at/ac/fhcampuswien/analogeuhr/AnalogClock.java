@@ -14,66 +14,60 @@ import javax.swing.*;
 public class AnalogClock extends JPanel implements Runnable
 {
     static private int design;
-    int xposition = 300;
-    int yposition = 300;
-    int lastxs = 0;
-    int lastys = 0;
-    int lastxm = 0;
-    int lastym = 0;
-    int lastxh = 0;
-    int lastyh = 0;
+    int xclockposition = 300;
+    int yclockposition = 300;
+    int lastxsecond = 0;
+    int lastysecond = 0;
+    int lastxminute = 0;
+    int lastyminute = 0;
+    int lastxhour = 0;
+    int lastyhour = 0;
     Thread thread;
     SimpleDateFormat formattedDate = new SimpleDateFormat();
     Date date;
 
-    public static void setBackground(int background) {
-        AnalogClock.design = background;
-    }
-
     /*
-     * Die drawBackground Methode fügt einem Graphics Objekt Attribute hinzu.
+     * The drawBackground methods adds attributes to a Graphics g object.
      */
-    private void drawBackground(Graphics g)
-    {
+    private void drawBackground(Graphics g) {
         BufferedImage img = null;
-        if (design==1) {
-            try {
-                img = ImageIO.read(new File("image0.jpg"));
-            } catch (
-                    IOException e) {
+        switch (design) {
+            case 1:
+                try {
+                    img = ImageIO.read(new File("image0.jpg"));
+                } catch (IOException e) {
+                } break;
+            case 2: {
+                try {
+                    img = ImageIO.read(new File("image1.jpg"));
+                } catch (IOException e) {
+                } break;
             }
-        } else if (design==2) {
-            try {
-                img = ImageIO.read(new File("image1.jpg"));
-            } catch (
-                    IOException e) {
+            case 3: {
+                try {
+                    img = ImageIO.read(new File("image2.jpg"));
+                } catch (IOException e) {
+                } break;
             }
-        } else if (design==3) {
-            try {
-                img = ImageIO.read(new File("image2.jpg"));
-            } catch (
-                    IOException e) {
+                default:
+                    try {
+                    img = ImageIO.read(new File("image3.jpg"));
+                } catch (IOException e) {
+                }
             }
-        } else {
-            try {
-                img = ImageIO.read(new File("image4.jpg"));
-            } catch (
-                    IOException ignored) {
-            }
-        }
 
-        g.drawImage(img, 0, 0, null); //Eingabe die Hintergrund auswählt
+        g.drawImage(img, 0, 0, null); //Uses img to draw background.
 
-        //Fügt römische Ziffern hinzu
+        //Adds Roman numerals to the background.
         g.setColor(Color.black);
-        g.drawString("XII", xposition - 20, yposition - 220);
-        g.drawString("III", xposition + 215, yposition);
-        g.drawString("VI", xposition - 10, yposition + 245);
-        g.drawString("IX", xposition - 245, yposition);
+        g.drawString("XII", xclockposition - 20, yclockposition - 220);
+        g.drawString("III", xclockposition + 215, yclockposition);
+        g.drawString("VI", xclockposition - 10, yclockposition + 245);
+        g.drawString("IX", xclockposition - 245, yclockposition);
     }
 
     /*
-     * Die paint Methode ist für die Darstellung der Zeiger verantwortlich.
+     * Die paint methods draws the hand of the analogue clock.
      */
     public void paint(Graphics g1)
     {
@@ -86,12 +80,11 @@ public class AnalogClock extends JPanel implements Runnable
         int second;
         int minute;
         int hour;
-        Graphics2D g = (Graphics2D) g1; // 2D Grphics Objekt wird für 2D Zeiger benötigt
+        Graphics2D g = (Graphics2D) g1; // Casting 1D to 2D objects because we want to represent 2D clock hands.
 
-        //Methode drawBackground zeichnet Hintergrund
         drawBackground(g);
 
-        //Datum
+        //A date object is used to extract values for the current time.
         date = new Date();
 
         formattedDate.applyPattern("s");
@@ -101,44 +94,36 @@ public class AnalogClock extends JPanel implements Runnable
         formattedDate.applyPattern("h");
         hour = Integer.parseInt(formattedDate.format(date));
 
-        //x+y center = Beginn des Zeigers
-        xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + xposition);
-        ysecond = (int)(Math.sin(second * Math.PI / 30 - Math.PI / 2) * 220 + yposition);
+        //x+y coordinates determine the end of the clock hands
+        xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + xclockposition);
+        ysecond = (int)(Math.sin(second * Math.PI / 30 - Math.PI / 2) * 220 + yclockposition);
 
-        //x+y center = Beginn des Zeigers
-        xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 200 + xposition);
-        yminute = (int)(Math.sin(minute * Math.PI / 30 - Math.PI / 2) * 200 + yposition);
+        xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 200 + xclockposition);
+        yminute = (int)(Math.sin(minute * Math.PI / 30 - Math.PI / 2) * 200 + yclockposition);
 
-        //x+y center = Beginn des Zeigers
-        xhour = (int)(Math.cos((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + xposition);
-        yhour = (int)(Math.sin((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + yposition);
+        xhour = (int)(Math.cos((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + xclockposition);
+        yhour = (int)(Math.sin((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + yclockposition);
 
-        g.setStroke(new BasicStroke(6)); // Breite Zeiger
-        //SekundenZeiger Farbe
-        g.setColor(Color.black);
-        g.drawLine(xposition, yposition, xsecond, ysecond);
+        //Second clock hand
+        g.setStroke(new BasicStroke(6)); // clock hand width
+        g.setColor(Color.black); //color
+        g.drawLine(xclockposition, yclockposition, xsecond, ysecond); //drawing clock hands
 
-        //MinutenZeiger Farbe
+        //Minute clock hand
         g.setStroke(new BasicStroke(8));
         g.setColor(Color.black);
-        g.drawLine(xposition, yposition - 1, xminute, yminute);
-        g.drawLine(xposition - 1, yposition, xminute, yminute);
+        g.drawLine(xclockposition, yclockposition - 1, xminute, yminute);
+        g.drawLine(xclockposition - 1, yclockposition, xminute, yminute);
 
-        //StundenZeiger Farbe
+        //Hour clock hand
         g.setStroke(new BasicStroke(10));
         g.setColor(Color.black);
-        g.drawLine(xposition, yposition - 1, xhour, yhour);
-        g.drawLine(xposition - 1, yposition, xhour, yhour);
-        lastxs = xsecond;
-        lastys = ysecond;
-        lastxm = xminute;
-        lastym = yminute;
-        lastxh = xhour;
-        lastyh = yhour;
+        g.drawLine(xclockposition, yclockposition - 1, xhour, yhour);
+        g.drawLine(xclockposition - 1, yclockposition, xhour, yhour);
     }
 
     /*
-     * Thread geht in runnable Status, die start Methode ruft intern die run Methode auf.
+     * Thread enters runnable state. The start method is internally called by the run() method.
      */
     public void start()
     {
@@ -149,32 +134,35 @@ public class AnalogClock extends JPanel implements Runnable
         }
     }
 
-    public void run()  // thread startet
+    /*
+     * Thread starts and calls paint via repaint().
+     */
+    public void run()
     {
         while (thread!=null) {
-            try {
-                Thread.sleep(50); //Pausiert execution für 50 milliseconds
-            } catch (InterruptedException e) {
-            }  // try catch wirde benötigt weil anderen threads den thread unterbrechen können
-            repaint();      // paints und updates
+            repaint();
         }
     }
 
-    public void update(Graphics g) // wird intern von repaint() aufgerufen
-    {
-        paint(g);
+    /*
+     * Set background variable
+     */
+    public static void setBackground(int background) {
+        AnalogClock.design = background;
     }
 
 
     public static void main(String[] args)
     {
-        //Erzeugt Objekt der Klasse AnalogClock
+        //Create object of the class AnalogClock
         AnalogClock clock = new AnalogClock();
 
+        //The first JFrame object is used for the button window.
         JFrame buttonWindow = new JFrame("Button window");
         final JTextField textfield = new JTextField();
         textfield.setBounds(50,25, 150,20);
 
+        //Set Button properties
         JButton button3=new JButton("Click here for design 3");
         JButton button2=new JButton("Click here for design 2");
         JButton button1=new JButton("Click here for design 1");
@@ -185,6 +173,7 @@ public class AnalogClock extends JPanel implements Runnable
         button3.setBounds(50,100,200,30);
         button4.setBounds(50,125,200,30);
 
+        //Action listeners are used to get input from buttons
         button1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 textfield.setText("Design 1");
@@ -210,6 +199,7 @@ public class AnalogClock extends JPanel implements Runnable
             }
         });
 
+        //Add buttons to window
         buttonWindow.add(button1);
         buttonWindow.add(button2);
         buttonWindow.add(button3);
@@ -220,28 +210,22 @@ public class AnalogClock extends JPanel implements Runnable
         buttonWindow.setLayout(null);
         buttonWindow.setVisible(true);
 
-        //Fenster Pop-Up
+        //The second JFrame object is used to depict the clock.
         JFrame windowClock = new JFrame();
 
-        //Hintergrundfarbe
-        Color c = new Color(255, 255, 255);
-
-        //Hintergrundfarbe im Fenster implementieren
-        windowClock.setBackground(c);
-
-        //Pop-up-Fenster schließen
+        //Window closes when program is stopped.
         windowClock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Länge+Breite vom Fenster
+        //Window dimensions
         windowClock.setBounds(0, 0, 600, 600);
 
-        //Objektimport im Fenster
+        //Depict clock on window
         windowClock.getContentPane().add(clock);
 
-        //Sichtbarkeit
+        //Set visibility
         windowClock.setVisible(true);
 
-        //Start bzw. Anfang
+        //Start clock procedure
         clock.start();
     }
 }
