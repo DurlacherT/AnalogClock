@@ -32,6 +32,12 @@ import javax.imageio.ImageIO;           //--> Import images
 import javax.swing.*;                   //--> Create container and windows
 ```
 
+The JPanel class provides a container for our windows. The runnable interface allows us to execute our class within a thread.
+```java
+public class AnalogClock extends JPanel implements Runnable
+```
+### drawBackground
+
 The drawBackground method is used to draw the background of the Clock. 
 
 Different files are imported depending on the choice of the user:
@@ -57,6 +63,13 @@ Adds roman numerals to the background:
     g.drawString("XII", xposition - 20, yposition - 220);
 ```
 
+### paint()
+
+The paint() methods is responsible for drawing the clock it calls the drawBackground() method and is in turn called by the run() method.
+```java
+    public void paint(Graphics g1)
+```
+
 Type casting is used to cread a 2D graphics object because we want to display 2D clock hands:
 ```java
    Graphics2D g = (Graphics2D) g1;
@@ -78,7 +91,9 @@ Additional attributes of the clock hands are set and the hands are drawn:
         g.drawLine(xposition, yposition, xsecond, ysecond);
 ```
 
-The thread methods are used to execute the code above within a thread. start() puts the thread in runnable state: 
+### Thread
+
+The thread methods are used to execute the code above within a thread. start() puts the thread in runnable state. The thread variable is initially null therefore the thread will always start: 
 ```java
     public void start()
     {
@@ -89,28 +104,19 @@ The thread methods are used to execute the code above within a thread. start() p
         }
     }
 ```
-run() starts the thread
+run() starts the thread. repaint() internally calls the paint() method. Thread!=null is used because we want to repaint only when the thread is in runnable state (this means only if the start() method has been called).
 ```java
 
-    public void run()  
+    public void run()  // thread startet
     {
         while (thread!=null) {
-            try {
-                Thread.sleep(50); //pauses execution for 50 milliseconds
-            } catch (InterruptedException e) {
-            }  // try catch //used because other threads can pause thread execution
-            repaint();      // paints und updates
+            repaint();      // ruft paint() auf
         }
-    }
-```    
-update() is called internally by repaint()
-```java
-    public void update(Graphics g) 
-    {
-        paint(g);
     }
 
 ```
+
+### Containers
 
 In the main method JFrame objects are used as containers. Those containers serve as the main windows.
 Buttons are created to determine user input:
@@ -138,6 +144,8 @@ A second JFrame object contains and displays the clock:
     windowClock.getContentPane().add(clock);
     windowClock.setVisible(true);
 ```
+### start
+
 clock.start() starts the clock procedure:
 ```java
     clock.start();
