@@ -14,17 +14,10 @@ import javax.swing.*;
 public class AnalogClock extends JPanel implements Runnable
 {
     static private int design;
-    int xclockposition = 300;
-    int yclockposition = 300;
-    int lastxsecond = 0;
-    int lastysecond = 0;
-    int lastxminute = 0;
-    int lastyminute = 0;
-    int lastxhour = 0;
-    int lastyhour = 0;
-    Thread thread;
-    SimpleDateFormat formattedDate = new SimpleDateFormat();
-    Date date;
+    final int XCLOCKPOSITION = 300;
+    final int YCLOCKPOSITION = 300;
+    private Thread thread;
+    private final SimpleDateFormat formattedDate = new SimpleDateFormat();
 
     /*
      * The drawBackground method adds attributes to a Graphics g object.
@@ -62,10 +55,10 @@ public class AnalogClock extends JPanel implements Runnable
 
         //Adds Roman numerals to the background.
         g.setColor(Color.black);
-        g.drawString("XII", xclockposition - 20, yclockposition - 220);
-        g.drawString("III", xclockposition + 215, yclockposition);
-        g.drawString("VI", xclockposition - 10, yclockposition + 245);
-        g.drawString("IX", xclockposition - 245, yclockposition);
+        g.drawString("XII", XCLOCKPOSITION - 20, YCLOCKPOSITION - 220);
+        g.drawString("III", XCLOCKPOSITION + 215, YCLOCKPOSITION);
+        g.drawString("VI", XCLOCKPOSITION - 10, YCLOCKPOSITION + 245);
+        g.drawString("IX", XCLOCKPOSITION - 245, YCLOCKPOSITION);
     }
 
     /*
@@ -87,7 +80,7 @@ public class AnalogClock extends JPanel implements Runnable
         drawBackground(g);
 
         //A date object is used to extract values for the current time.
-        date = new Date();
+        Date date = new Date();
 
         formattedDate.applyPattern("s");
         second = Integer.parseInt(formattedDate.format(date));
@@ -97,31 +90,31 @@ public class AnalogClock extends JPanel implements Runnable
         hour = Integer.parseInt(formattedDate.format(date));
 
         //x+y coordinates determine the end of the clock hands
-        xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + xclockposition);
-        ysecond = (int)(Math.sin(second * Math.PI / 30 - Math.PI / 2) * 220 + yclockposition);
+        xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + XCLOCKPOSITION);
+        ysecond = (int)(Math.sin(second * Math.PI / 30 - Math.PI / 2) * 220 + YCLOCKPOSITION);
 
-        xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 200 + xclockposition);
-        yminute = (int)(Math.sin(minute * Math.PI / 30 - Math.PI / 2) * 200 + yclockposition);
+        xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 200 + XCLOCKPOSITION);
+        yminute = (int)(Math.sin(minute * Math.PI / 30 - Math.PI / 2) * 200 + YCLOCKPOSITION);
 
-        xhour = (int)(Math.cos((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + xclockposition);
-        yhour = (int)(Math.sin((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + yclockposition);
+        xhour = (int)(Math.cos((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + XCLOCKPOSITION);
+        yhour = (int)(Math.sin((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + YCLOCKPOSITION);
 
         //Second clock hand
         g.setStroke(new BasicStroke(6)); // clock hand width
         g.setColor(Color.black); //color
-        g.drawLine(xclockposition, yclockposition, xsecond, ysecond); //drawing clock hands
+        g.drawLine(XCLOCKPOSITION, YCLOCKPOSITION, xsecond, ysecond); //drawing clock hands
 
         //Minute clock hand
         g.setStroke(new BasicStroke(8));
         g.setColor(Color.black);
-        g.drawLine(xclockposition, yclockposition - 1, xminute, yminute);
-        g.drawLine(xclockposition - 1, yclockposition, xminute, yminute);
+        g.drawLine(XCLOCKPOSITION, YCLOCKPOSITION - 1, xminute, yminute);
+        g.drawLine(XCLOCKPOSITION - 1, YCLOCKPOSITION, xminute, yminute);
 
         //Hour clock hand
         g.setStroke(new BasicStroke(10));
         g.setColor(Color.black);
-        g.drawLine(xclockposition, yclockposition - 1, xhour, yhour);
-        g.drawLine(xclockposition - 1, yclockposition, xhour, yhour);
+        g.drawLine(XCLOCKPOSITION, YCLOCKPOSITION - 1, xhour, yhour);
+        g.drawLine(XCLOCKPOSITION - 1, YCLOCKPOSITION, xhour, yhour);
     }
 
     /*

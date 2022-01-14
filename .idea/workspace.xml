@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62a15f8e-2120-4915-b8bb-e91bc05e0554" name="Changes" comment="push">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/ac/fhcampuswien/analogeuhr/AnalogClock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/ac/fhcampuswien/analogeuhr/AnalogClock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,6 +107,10 @@
       <workItem from="1642026700778" duration="996000" />
       <workItem from="1642080007935" duration="5462000" />
       <workItem from="1642090015119" duration="1087000" />
+      <workItem from="1642093048261" duration="163000" />
+      <workItem from="1642098832011" duration="145000" />
+      <workItem from="1642099350795" duration="764000" />
+      <workItem from="1642160287684" duration="309000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1641590961808</created>
@@ -167,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642086433794</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="push">
+      <created>1642093200801</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1642093200801</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
