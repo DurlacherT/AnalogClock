@@ -8,11 +8,11 @@ Run the program by importing the project in IntelliJ and execute the main Class.
 ## Source Code Review
 The code contains two main sections: Class methods and the main method. The class methods can be divided into five sections: 
 
-1. A method responsible for the drawing of the background
-2. A method responsible for the drawing of second, minute, and hour hands of the clock
+1. A method responsible for the drawing of the background.
+2. A method responsible for the drawing of second, minute, and hour hands of the clock.
 3. A method responsible for creating the button window.
 4. A method responsible for creating the clock window.
-5. And thread methods responsible for the execution of the methods within a thread
+5. And thread methods responsible for the execution of the methods within a thread.
 
 The main method includes:
 1. A section responsible for the creation of a class object that is used to provide the clock functionality and the calling of methods.
@@ -148,7 +148,8 @@ In the main method a AnalogClock object is created, the createButtones, and the 
         AnalogClock clock = new AnalogClock();    //Create instance of the class AnalogClock
         clock.createButtons();                    //Create button window
         clock.createClockWindow();                //Create clock window
-        clock.start();                            //Start clock procedure```
+        clock.start();                            //Start clock procedure
+```
 
 ## Authors
 Thomas Durlacher, Yassin Elwan, Enes Berk, Lisa Ebenbauer
