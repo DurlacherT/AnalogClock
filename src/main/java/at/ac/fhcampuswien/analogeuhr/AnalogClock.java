@@ -90,8 +90,14 @@ public class AnalogClock extends JPanel implements Runnable
         formattedDate.applyPattern("h");
         hour = Integer.parseInt(formattedDate.format(date));
 
-        //x+y coordinates determine the end of the clock hands
-        xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + XCLOCKPOSITION);
+        /* x+y coordinates determine the end of the clock hands
+        * when second = 30 then x should be 0 and y should be 1 (times a constant)
+        * sin/cos function use degree values
+        * pi is 180 degree
+        * pi/2 is 90 degree
+        * example: second = 30 then 30 * pi / 30 provides an angle (pi) that is shifted by 90 degree because clock starts at 90 degree therefore - pi/2
+        */
+    xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + XCLOCKPOSITION);
         ysecond = (int)(Math.sin(second * Math.PI / 30 - Math.PI / 2) * 220 + YCLOCKPOSITION);
 
         xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 200 + XCLOCKPOSITION);
@@ -108,14 +114,14 @@ public class AnalogClock extends JPanel implements Runnable
         //Minute clock hand
         g.setStroke(new BasicStroke(8));
         g.setColor(Color.black);
-        g.drawLine(XCLOCKPOSITION, YCLOCKPOSITION - 1, xminute, yminute);
-        g.drawLine(XCLOCKPOSITION - 1, YCLOCKPOSITION, xminute, yminute);
+        g.drawLine(XCLOCKPOSITION, YCLOCKPOSITION , xminute, yminute);
+        g.drawLine(XCLOCKPOSITION , YCLOCKPOSITION, xminute, yminute);
 
         //Hour clock hand
         g.setStroke(new BasicStroke(10));
         g.setColor(Color.black);
-        g.drawLine(XCLOCKPOSITION, YCLOCKPOSITION - 1, xhour, yhour);
-        g.drawLine(XCLOCKPOSITION - 1, YCLOCKPOSITION, xhour, yhour);
+        g.drawLine(XCLOCKPOSITION, YCLOCKPOSITION, xhour, yhour);
+        g.drawLine(XCLOCKPOSITION, YCLOCKPOSITION, xhour, yhour);
     }
 
     /*
@@ -123,11 +129,8 @@ public class AnalogClock extends JPanel implements Runnable
      */
     public void start()
     {
-        if (thread == null)
-        {
             thread = new Thread(this);
             thread.start();
-        }
     }
 
     /*
@@ -135,8 +138,13 @@ public class AnalogClock extends JPanel implements Runnable
      */
     public void run()
     {
-        while (thread!=null) {
+        while (true) {
             repaint();
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
