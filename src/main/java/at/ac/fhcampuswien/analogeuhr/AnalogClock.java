@@ -134,7 +134,7 @@ public class AnalogClock extends JPanel implements Runnable
     }
 
     /*
-     * Thread starts and calls paint via repaint().
+     * Thread starts and calls paint via repaint() in a while loop.
      */
     public void run()
     {
@@ -179,6 +179,7 @@ public class AnalogClock extends JPanel implements Runnable
         button4.setBounds(50,150,200,30);
 
         //Action listeners are used to get input from buttons
+        //Lambda expressions are used for the sake of simplicity
         button0.addActionListener(e -> {
             textfield.setText("Design 0");
             setBackground(0);
