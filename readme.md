@@ -91,7 +91,7 @@ Additional attributes of the clock hands are set and the hands are drawn:
         g.drawLine(xposition, yposition, xsecond, ysecond);
 ```
 
-### Thread
+### thread
 
 The thread methods are used to execute the code above within a thread. start() puts the thread in runnable state. The thread variable is initially null therefore the thread will always start: 
 ```java
@@ -116,7 +116,7 @@ run() starts the thread. repaint() internally calls the paint() method. Thread!=
 
 ```
 
-### Containers
+### containers
 
 In the createButtons() method and the createClockWindow() JFrame objects are used as containers. Those containers serve as the main windows.
 Buttons are created to determine user input:
