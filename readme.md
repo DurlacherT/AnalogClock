@@ -1,28 +1,27 @@
 # Java Analog Clock
 ## Overview
-The following repo contains the program for an analog clock. The function of the program is very simple: Display an analog clock and allow the user to choose between three different backgrounds by clicking buttons. The exit button ends the program.
+The following repo contains the program for an analog clock. The function of the program is very simple: Display an analog clock and allow the user to choose between three different backgrounds by clicking buttons. The stop button ends the program.
 
 ## Guideline and Function
 Run the program by importing the project in IntelliJ and execute the main Class. By default the program starts with two windows. One window displays the clock. The second, minute, and hour hand of the clock will start to move at the start of the program. The second window contains buttons. At the beginning of the program the background for the clock is white. By pressing one of the three design buttons the user can switch between three background options. The exit button closes the program.
 
 ## Source Code Review
-The code contains two main sections: Class methods and the main method. The class methods can be divided into three sections: 
+The code contains two main sections: Class methods and the main method. The class methods can be divided into five sections: 
 
 1. A method responsible for the drawing of the background
 2. A method responsible for the drawing of second, minute, and hour hands of the clock
-3. And thread methods responsible for the execution of the methods within a thread
+3. A method responsible for creating the button window.
+4. A method responsible for creating the clock window.
+5. And thread methods responsible for the execution of the methods within a thread
 
-The main method can be divided into two section:
-1. A section responsible for the creation of windows, buttons, and button input
-2. And a section responsible for the creaton of a class object that is used to provide the clock functionality
+The main method includes:
+1. A section responsible for the creation of a class object that is used to provide the clock functionality and the calling of methods.
 
-The main classes use in drawing the background and clock hands are the standard Java graphics, and graphics2D classes.
+The main classes used in drawing the background and clock hands are the standard Java graphics, and graphics2D classes.
 
 At the start of the program we import the classes used in the application:
 ```java
 import java.awt.*;                      //--> Graphics object
-import java.awt.event.ActionEvent;      //--> Action event for button
-import java.awt.event.ActionListener;   //--> Action listener for button
 import java.awt.image.BufferedImage;    //--> Save image
 import java.io.File;                    //--> Image import
 import java.io.IOException;             //--> Exception handling
@@ -42,15 +41,16 @@ The drawBackground method is used to draw the background of the Clock.
 
 Different files are imported depending on the choice of the user:
 ```java
-    private void drawBackground(Graphics g)
-    {
+    private void drawBackground(Graphics g) {
+
+        //Select input file for background.
         BufferedImage img = null;
-        if (design==1) {
-            try {
-                img = ImageIO.read(new File("image0.jpg"));
-            } catch (
-                    IOException e) {
-            }
+        switch (design) {
+            case 1:
+                try {
+                    img = ImageIO.read(new File("src/main/resources/image0.jpg"));
+                } catch (IOException e) {
+                } break;
 ```
 
 Uses image to draw background:
@@ -118,7 +118,7 @@ run() starts the thread. repaint() internally calls the paint() method. Thread!=
 
 ### Containers
 
-In the main method JFrame objects are used as containers. Those containers serve as the main windows.
+In the createButtons() method and the createClockWindow() JFrame objects are used as containers. Those containers serve as the main windows.
 Buttons are created to determine user input:
 ```java
         JFrame buttonWindow = new JFrame("Button window");
@@ -127,11 +127,9 @@ Buttons are created to determine user input:
 
         JButton button3=new JButton("Click here for design 3");
         
-                button1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                textfield.setText("Design 1");
-                setBackground(1);
-            }
+        button0.addActionListener(e -> {
+            textfield.setText("Design 0");
+            setBackground(0);
         });
  ```   
 A second JFrame object contains and displays the clock:
@@ -145,11 +143,12 @@ A second JFrame object contains and displays the clock:
     windowClock.setVisible(true);
 ```
 ### start
-
-clock.start() starts the clock procedure:
+In the main method a AnalogClock object is created, the createButtones, and the createClockWindow methods are called. Finally, the procedure is started.
 ```java
-    clock.start();
-```
+        AnalogClock clock = new AnalogClock();    //Create instance of the class AnalogClock
+        clock.createButtons();                    //Create button window
+        clock.createClockWindow();                //Create clock window
+        clock.start();                            //Start clock procedure```
 
 ## Authors
 Thomas Durlacher, Yassin Elwan, Enes Berk, Lisa Ebenbauer
