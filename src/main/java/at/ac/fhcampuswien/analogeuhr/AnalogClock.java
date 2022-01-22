@@ -63,7 +63,7 @@ public class AnalogClock extends JPanel implements Runnable
     }
 
     /*
-     * The paint method draws the hand of the analogue clock.
+     * The paint method draws the hands of the analogue clock.
      */
     public void paint(Graphics g1)
     {
@@ -203,7 +203,6 @@ public class AnalogClock extends JPanel implements Runnable
         buttonWindow.setBounds(605,100,300,300);
         buttonWindow.setLayout(null);
         buttonWindow.setVisible(true);
-
     }
 
     /*
