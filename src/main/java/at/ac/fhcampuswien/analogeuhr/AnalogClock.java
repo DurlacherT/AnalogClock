@@ -12,9 +12,8 @@ import javax.swing.*;
 public class AnalogClock extends JPanel implements Runnable
 {
     static private int design;
-    final int XCLOCKPOSITION = 300;
-    final int YCLOCKPOSITION = 300;
-    private Thread thread;
+    private final int XCLOCKPOSITION = 300;
+    private final int YCLOCKPOSITION = 300;
     private final SimpleDateFormat formattedDate = new SimpleDateFormat();
 
     /*
@@ -97,7 +96,7 @@ public class AnalogClock extends JPanel implements Runnable
         * pi/2 is 90 degree
         * example: second = 30 then 30 * pi / 30 provides an angle (pi) that is shifted by 90 degree because clock starts at 90 degree therefore - pi/2
         */
-    xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + XCLOCKPOSITION);
+        xsecond = (int)(Math.cos(second * Math.PI / 30 - Math.PI / 2) * 220 + XCLOCKPOSITION);
         ysecond = (int)(Math.sin(second * Math.PI / 30 - Math.PI / 2) * 220 + YCLOCKPOSITION);
 
         xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 200 + XCLOCKPOSITION);
@@ -129,8 +128,8 @@ public class AnalogClock extends JPanel implements Runnable
      */
     public void start()
     {
-            thread = new Thread(this);
-            thread.start();
+        Thread thread = new Thread(this);
+        thread.start();
     }
 
     /*

@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62a15f8e-2120-4915-b8bb-e91bc05e0554" name="Changes" comment="Peer review Vorschläge eingearbeitet">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/at/ac/fhcampuswien/analogeuhr/AnalogClock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/ac/fhcampuswien/analogeuhr/AnalogClock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/ac/fhcampuswien/analogeuhr/AnalogClock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +24,13 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,6 +59,9 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="at.ac.fhcampuswien.analogeuhr" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\thoma\IdeaProjects\AnalogClock\src\main\resources" />
       <recent name="C:\Users\thoma\IdeaProjects\AnalogeUhr" />
@@ -120,7 +137,10 @@
       <workItem from="1642796746583" duration="3000000" />
       <workItem from="1642856356898" duration="67000" />
       <workItem from="1642874003654" duration="5185000" />
-      <workItem from="1642880413993" duration="2351000" />
+      <workItem from="1642880413993" duration="2565000" />
+      <workItem from="1642883096335" duration="4275000" />
+      <workItem from="1642949720098" duration="1061000" />
+      <workItem from="1642976464167" duration="414000" />
     </task>
     <task id="LOCAL-00001" summary="first push">
       <created>1641590961808</created>
@@ -213,7 +233,21 @@
       <option name="project" value="LOCAL" />
       <updated>1642879266458</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Peer review Vorschläge eingearbeitet">
+      <created>1642882879817</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1642882879817</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Peer review Vorschläge eingearbeitet">
+      <created>1642882998595</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1642882998595</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
