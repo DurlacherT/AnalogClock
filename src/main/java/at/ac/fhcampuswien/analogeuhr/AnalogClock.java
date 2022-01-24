@@ -102,6 +102,7 @@ public class AnalogClock extends JPanel implements Runnable
         xminute = (int)(Math.cos(minute * Math.PI / 30 - Math.PI / 2) * 200 + XCLOCKPOSITION);
         yminute = (int)(Math.sin(minute * Math.PI / 30 - Math.PI / 2) * 200 + YCLOCKPOSITION);
 
+        //example: hour = 6; minute = 0; then (180 + 0) * pi/180 = pi = 180 degree. Minus pi/90 to get to the right angle.
         xhour = (int)(Math.cos((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + XCLOCKPOSITION);
         yhour = (int)(Math.sin((hour * 30 + minute / 2.0) * Math.PI / 180 - Math.PI / 2) * 180 + YCLOCKPOSITION);
 
@@ -124,7 +125,7 @@ public class AnalogClock extends JPanel implements Runnable
     }
 
     /*
-     * Thread enters runnable state. The start method is internally called by the run() method.
+     * Thread enters runnable state. The run method is internally called by the start() method.
      */
     public void start()
     {
